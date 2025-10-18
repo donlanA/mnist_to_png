@@ -12,11 +12,11 @@ import png
 # source: http://abel.ee.ucla.edu/cvxopt/_downloads/mnist.py
 def read(dataset = "training", path = "."):
     if dataset is "training":
-        fname_img = os.path.join(path, 'train-images-idx3-ubyte')
-        fname_lbl = os.path.join(path, 'train-labels-idx1-ubyte')
+        fname_img = os.path.join(path, 'train-images.idx3-ubyte')
+        fname_lbl = os.path.join(path, 'train-labels.idx1-ubyte')
     elif dataset is "testing":
-        fname_img = os.path.join(path, 't10k-images-idx3-ubyte')
-        fname_lbl = os.path.join(path, 't10k-labels-idx1-ubyte')
+        fname_img = os.path.join(path, 't10k-images.idx3-ubyte')
+        fname_lbl = os.path.join(path, 't10k-labels.idx1-ubyte')
     else:
         raise ValueError("dataset must be 'testing' or 'training'")
 
@@ -55,12 +55,14 @@ def write_dataset(labels, data, size, rows, cols, output_dir):
             w.write(h, data_i)
 
 if __name__ == "__main__":
-    if len(sys.argv) != 3:
-        print("usage: {0} <input_path> <output_path>".format(sys.argv[0]))
-        sys.exit()
-
-    input_path = sys.argv[1]
-    output_path = sys.argv[2]
+    # if len(sys.argv) != 3:
+    #     print("usage: {0} <input_path> <output_path>".format(sys.argv[0]))
+    #     sys.exit()
+    # input_path = sys.argv[1]
+    # output_path = sys.argv[2]
+    
+    input_path = "."
+    output_path = "./mnist_png"
 
     for dataset in ["training", "testing"]:
         labels, data, size, rows, cols = read(dataset, input_path)
